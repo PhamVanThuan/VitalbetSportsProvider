@@ -8,6 +8,7 @@ namespace VitalbetSportsProvider.WebClient
     {
         public void Configuration(IAppBuilder app)
         {
+            app.MapSignalR();
         }
     }
 }
