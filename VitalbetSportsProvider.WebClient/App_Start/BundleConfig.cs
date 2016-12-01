@@ -9,6 +9,8 @@ namespace VitalbetSportsProvider.WebClient
             bundles.Add(new ScriptBundle("~/bundles/libs").Include(
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/jquery.signalR-{version}.js",
+                "~/Scripts/react.js",
+                "~/Scripts/react-dom.js",
                 "~/Scripts/bootstrap.js"));
             
             bundles.Add(new StyleBundle("~/Content/css").Include(
