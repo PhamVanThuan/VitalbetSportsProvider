@@ -1,5 +1,5 @@
-﻿var Home = React.createClass({
-    render: function() {
+﻿class Navigation extends React.Component {
+    render () {
         return (
             <div className="container">
 	            <div className="navbar-header">
@@ -13,6 +13,6 @@
             </div>
         );
     }
-});
+};
 
-ReactDOM.render(React.createElement(Home, null), document.getElementById("react-navigation"));
+ReactDOM.render(React.createElement(Navigation, null), document.getElementById("react-navigation"));
