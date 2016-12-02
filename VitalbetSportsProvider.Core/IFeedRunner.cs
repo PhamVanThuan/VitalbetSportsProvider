@@ -1,4 +1,4 @@
-﻿namespace VitalbetSportsProvider.WebClient.Core
+﻿namespace VitalbetSportsProvider.Core
 {
     public interface IFeedRunner
     {

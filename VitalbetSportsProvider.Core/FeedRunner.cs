@@ -9,7 +9,7 @@ using VitalbetSportsProvider.DataModel.Interfaces;
 using VitalbetSportsProvider.Feed.Interfaces;
 using VitalbetSportsProvider.Models;
 
-namespace VitalbetSportsProvider.WebClient.Core
+namespace VitalbetSportsProvider.Core
 {
     /// <summary>
     /// It is backgound task in the WebClient, but ideally has to be different service.

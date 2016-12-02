@@ -5,12 +5,12 @@ using VitalbetSportsProvider.DataModel.Interfaces;
 using VitalbetSportsProvider.Feed.Http;
 using VitalbetSportsProvider.Feed.Interfaces;
 
-namespace VitalbetSportsProvider.WebClient.Core
+namespace VitalbetSportsProvider.Core
 {
     public class Container
     {
-        private static volatile IUnityContainer instance;
-        private static object syncRoot = new object();
+        private static volatile IUnityContainer _instance;
+        private static object _syncRoot = new object();
 
         private Container() { }
 
@@ -18,19 +18,19 @@ namespace VitalbetSportsProvider.WebClient.Core
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
-                    lock (syncRoot)
+                    lock (_syncRoot)
                     {
-                        if (instance == null)
+                        if (_instance == null)
                         {
-                            instance = new UnityContainer();
-                            Register(instance);
+                            _instance = new UnityContainer();
+                            Register(_instance);
                         }
                     }
                 }
 
-                return instance;
+                return _instance;
             }
         }
 

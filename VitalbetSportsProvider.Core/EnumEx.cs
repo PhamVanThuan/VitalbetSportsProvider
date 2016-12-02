@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VitalbetSportsProvider.WebClient.Core
+namespace VitalbetSportsProvider.Core
 {
     public static class EnumEx
     {

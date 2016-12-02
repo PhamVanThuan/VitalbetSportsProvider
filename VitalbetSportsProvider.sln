@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{68E15802-D40
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalbetSportsProvider.DataModel.Interfaces", "VitalbetSportsProvider.DataModel.Interfaces\VitalbetSportsProvider.DataModel.Interfaces.csproj", "{B5D78FC2-9DAE-4B0B-B8AD-D3F90C3B0D12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalbetSportsProvider.WebClient.Core", "VitalbetSportsProvider.WebClient.Core\VitalbetSportsProvider.WebClient.Core.csproj", "{B5365C3F-3DC5-4960-BFD3-ADC3103C2813}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalbetSportsProvider.Core", "VitalbetSportsProvider.Core\VitalbetSportsProvider.Core.csproj", "{B5365C3F-3DC5-4960-BFD3-ADC3103C2813}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

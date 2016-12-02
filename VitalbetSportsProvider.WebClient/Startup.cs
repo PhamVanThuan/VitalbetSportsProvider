@@ -2,8 +2,8 @@
 using Microsoft.Owin;
 using Microsoft.Practices.Unity;
 using Owin;
+using VitalbetSportsProvider.Core;
 using VitalbetSportsProvider.WebClient;
-using VitalbetSportsProvider.WebClient.Core;
 using VitalbetSportsProvider.WebClient.Hubs;
 
 [assembly: OwinStartup(typeof(Startup))]

@@ -248,6 +248,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\VitalbetSportsProvider.Core\VitalbetSportsProvider.Core.csproj">
+      <Project>{B5365C3F-3DC5-4960-BFD3-ADC3103C2813}</Project>
+      <Name>VitalbetSportsProvider.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VitalbetSportsProvider.DataModel.Interfaces\VitalbetSportsProvider.DataModel.Interfaces.csproj">
       <Project>{B5D78FC2-9DAE-4B0B-B8AD-D3F90C3B0D12}</Project>
       <Name>VitalbetSportsProvider.DataModel.Interfaces</Name>
@@ -259,10 +263,6 @@
     <ProjectReference Include="..\VitalbetSportsProvider.Models\VitalbetSportsProvider.Models.csproj">
       <Project>{7AD10505-68DF-4B22-A062-B9DB7144AA7C}</Project>
       <Name>VitalbetSportsProvider.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VitalbetSportsProvider.WebClient.Core\VitalbetSportsProvider.WebClient.Core.csproj">
-      <Project>{B5365C3F-3DC5-4960-BFD3-ADC3103C2813}</Project>
-      <Name>VitalbetSportsProvider.WebClient.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
