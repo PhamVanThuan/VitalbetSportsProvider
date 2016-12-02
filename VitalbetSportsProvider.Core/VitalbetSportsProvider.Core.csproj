@@ -62,6 +62,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comparers\OddsComparer.cs" />
+    <Compile Include="Comparers\BetsComparer.cs" />
+    <Compile Include="Comparers\MatchesComparer.cs" />
+    <Compile Include="Comparers\SportsComparer.cs" />
+    <Compile Include="Comparers\EventsComparer.cs" />
     <Compile Include="Container.cs" />
     <Compile Include="EnumEx.cs" />
     <Compile Include="FeedRunner.cs" />

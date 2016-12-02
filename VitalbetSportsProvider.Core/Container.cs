@@ -1,11 +1,14 @@
 ﻿namespace VitalbetSportsProvider.Core
 {
+    using System.Collections.Generic;
     using AutoMapper;
     using Microsoft.Practices.Unity;
+    using Models;
     using VitalbetSportsProvider.DataModel;
     using VitalbetSportsProvider.DataModel.Interfaces;
     using VitalbetSportsProvider.Feed.Http;
     using VitalbetSportsProvider.Feed.Interfaces;
+    using WebClient.Core.Comparers;
 
     public class Container
     {
@@ -43,7 +46,13 @@
                 .RegisterInstance<IMapper>(new Mapper(config))
                 .RegisterType<ISportsRepository, SportsRepository>(new ContainerControlledLifetimeManager())
                 .RegisterType<IVitalbetSportsRepository, VitalbetSportsRepository>(new ContainerControlledLifetimeManager())
-                .RegisterType<IFeedRunner, FeedRunner>(new ContainerControlledLifetimeManager());
+                .RegisterType<IFeedRunner, FeedRunner>(new ContainerControlledLifetimeManager())
+
+                .RegisterType<IEqualityComparer<Bet>, BetsComparer>(new ContainerControlledLifetimeManager())
+                .RegisterType<IEqualityComparer<Event>, EventsComparer>(new ContainerControlledLifetimeManager())
+                .RegisterType<IEqualityComparer<Match>, MatchesComparer>(new ContainerControlledLifetimeManager())
+                .RegisterType<IEqualityComparer<Odds>, OddsComparer>(new ContainerControlledLifetimeManager())
+                .RegisterType<IEqualityComparer<Sport>, SportsComparer>(new ContainerControlledLifetimeManager());
         }
     }
 }
