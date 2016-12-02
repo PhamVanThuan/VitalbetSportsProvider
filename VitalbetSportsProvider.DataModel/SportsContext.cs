@@ -3,7 +3,7 @@ using VitalbetSportsProvider.Models;
 
 namespace VitalbetSportsProvider.DataModel
 {
-    public class SportsContext : DbContext
+    internal class SportsContext : DbContext
     {
         public DbSet<Sport> Sports { get; set; }
 

@@ -1,20 +1,23 @@
 ﻿using Microsoft.AspNet.SignalR;
 using Microsoft.Owin;
+using Microsoft.Practices.Unity;
 using Owin;
-using VitalbetSportsProvider.DataModel;
+using VitalbetSportsProvider.WebClient;
+using VitalbetSportsProvider.WebClient.Core;
 using VitalbetSportsProvider.WebClient.Hubs;
 
-[assembly: OwinStartup(typeof(VitalbetSportsProvider.WebClient.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 namespace VitalbetSportsProvider.WebClient
 {
-    public partial class Startup
+    public class Startup
     {
         public void Configuration(IAppBuilder app)
         {
-            var repo = new SportsRepository();
-            GlobalHost.DependencyResolver.Register(
-               typeof(SportsHub), () => new SportsHub(repo));
-            app.MapSignalR();
+            var container = Container.Instance;
+            container.RegisterType<SportsHub, SportsHub>();
+
+            var config = new HubConfiguration { Resolver = new UnityDependencyResolver(container), EnableDetailedErrors = true };
+            app.MapSignalR(config);
         }
     }
 }

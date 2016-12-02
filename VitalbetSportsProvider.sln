@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalbetSportsProvider.DataModel", "VitalbetSportsProvider.DataModel\VitalbetSportsProvider.DataModel.csproj", "{CDD5CF92-9D4F-4218-AE88-CBBF52A63035}"
 EndProject
@@ -20,6 +20,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalbetSportsProvider.ConsoleRunner", "VitalbetSportsProvider.ConsoleRunner\VitalbetSportsProvider.ConsoleRunner.csproj", "{E17A1BF5-390F-48D1-85F5-0A4BE553CF66}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalbetSportsProvider.WebClient", "VitalbetSportsProvider.WebClient\VitalbetSportsProvider.WebClient.csproj", "{170D8B52-B492-41D3-AEBD-895BE78F09B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{68E15802-D40A-4732-94E9-1307B3FFF77E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalbetSportsProvider.DataModel.Interfaces", "VitalbetSportsProvider.DataModel.Interfaces\VitalbetSportsProvider.DataModel.Interfaces.csproj", "{B5D78FC2-9DAE-4B0B-B8AD-D3F90C3B0D12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalbetSportsProvider.WebClient.Core", "VitalbetSportsProvider.WebClient.Core\VitalbetSportsProvider.WebClient.Core.csproj", "{B5365C3F-3DC5-4960-BFD3-ADC3103C2813}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,14 +61,24 @@ Global
 		{170D8B52-B492-41D3-AEBD-895BE78F09B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{170D8B52-B492-41D3-AEBD-895BE78F09B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{170D8B52-B492-41D3-AEBD-895BE78F09B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5D78FC2-9DAE-4B0B-B8AD-D3F90C3B0D12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D78FC2-9DAE-4B0B-B8AD-D3F90C3B0D12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D78FC2-9DAE-4B0B-B8AD-D3F90C3B0D12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D78FC2-9DAE-4B0B-B8AD-D3F90C3B0D12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5365C3F-3DC5-4960-BFD3-ADC3103C2813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5365C3F-3DC5-4960-BFD3-ADC3103C2813}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5365C3F-3DC5-4960-BFD3-ADC3103C2813}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5365C3F-3DC5-4960-BFD3-ADC3103C2813}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{CDD5CF92-9D4F-4218-AE88-CBBF52A63035} = {68E15802-D40A-4732-94E9-1307B3FFF77E}
 		{CE03A206-6A66-4246-98BE-C670CDBC2D37} = {C5997464-C1DC-4FA7-8540-C19B63951034}
 		{966FC619-4109-42F5-BDFA-526896D10885} = {C5997464-C1DC-4FA7-8540-C19B63951034}
 		{C08A3526-EE94-445A-8668-E598653554FD} = {4D65C40D-CFA4-4BB6-B033-509B5D040A97}
 		{7AD10505-68DF-4B22-A062-B9DB7144AA7C} = {4D65C40D-CFA4-4BB6-B033-509B5D040A97}
+		{B5D78FC2-9DAE-4B0B-B8AD-D3F90C3B0D12} = {68E15802-D40A-4732-94E9-1307B3FFF77E}
 	EndGlobalSection
 EndGlobal

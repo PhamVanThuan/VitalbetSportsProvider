@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using VitalbetSportsProvider.DataModel.Interfaces;
 using VitalbetSportsProvider.Models;
 
 namespace VitalbetSportsProvider.DataModel
 {
-    public class SportsRepository
+    public class SportsRepository : ISportsRepository
     {
         IReadOnlyCollection<Sport> cached;
 
