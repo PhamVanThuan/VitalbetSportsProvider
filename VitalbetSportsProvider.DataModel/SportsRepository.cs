@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using VitalbetSportsProvider.DataModel.Interfaces;
 using VitalbetSportsProvider.Models;
 
@@ -9,7 +10,7 @@ namespace VitalbetSportsProvider.DataModel
     {
         IReadOnlyCollection<Sport> cached;
 
-        public void AddOrUpdate(IList<Sport> sports)
+        public async Task AddOrUpdateAsync(IList<Sport> sports)
         {
             var events = sports.SelectMany(s => s.Events).ToList();
             var matches = events.SelectMany(s => s.Matches).ToList();
@@ -18,13 +19,13 @@ namespace VitalbetSportsProvider.DataModel
 
             using (var context = new SportsContext())
             {
-                context.BulkMerge(sports);
-                context.BulkMerge(events);
-                context.BulkMerge(matches);
-                context.BulkMerge(bets);
-                context.BulkMerge(odds);
+                await context.BulkMergeAsync(sports);
+                await context.BulkMergeAsync(events);
+                await context.BulkMergeAsync(matches);
+                await context.BulkMergeAsync(bets);
+                await context.BulkMergeAsync(odds);
 
-                context.BulkSaveChanges();
+                await context.BulkSaveChangesAsync();
             }
         }
 

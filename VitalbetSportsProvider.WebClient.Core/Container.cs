@@ -1,6 +1,9 @@
-﻿using Microsoft.Practices.Unity;
+﻿using AutoMapper;
+using Microsoft.Practices.Unity;
 using VitalbetSportsProvider.DataModel;
 using VitalbetSportsProvider.DataModel.Interfaces;
+using VitalbetSportsProvider.Feed.Http;
+using VitalbetSportsProvider.Feed.Interfaces;
 
 namespace VitalbetSportsProvider.WebClient.Core
 {
@@ -31,9 +34,16 @@ namespace VitalbetSportsProvider.WebClient.Core
             }
         }
 
+        public static T Resolve<T>() => (T)Instance.Resolve(typeof(T));
+
         private static void Register(IUnityContainer container)
         {
-            container.RegisterType<ISportsRepository, SportsRepository>(new ContainerControlledLifetimeManager());
+            var config = new MapperConfiguration(s => s.AddProfile<XmlMappings>());
+            container
+                .RegisterInstance<IMapper>(new Mapper(config))
+                .RegisterType<ISportsRepository, SportsRepository>(new ContainerControlledLifetimeManager())
+                .RegisterType<IVitalbetSportsRepository, VitalbetSportsRepository>(new ContainerControlledLifetimeManager())
+                .RegisterType<IFeedRunner, FeedRunner>(new ContainerControlledLifetimeManager());
         }
     }
 }

@@ -2,7 +2,7 @@
 using VitalbetSportsProvider.Models;
 using VitalbetSportsProvider.Models.Xml;
 
-namespace VitalbetSportsProvider.ConsoleRunner
+namespace VitalbetSportsProvider.WebClient.Core
 {
     public class XmlMappings : Profile
     {

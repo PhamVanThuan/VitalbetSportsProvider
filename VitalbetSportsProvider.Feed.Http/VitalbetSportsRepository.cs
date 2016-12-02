@@ -17,8 +17,6 @@ namespace VitalbetSportsProvider.Feed.Http
             var request = WebRequest.CreateHttp(Url);
             request.Referer = Url;
             request.Method = "GET";
-            request.Headers.Set(HttpRequestHeader.CacheControl, "no-cache");
-            request.Headers.Set(HttpRequestHeader.Pragma, "no-cache");
             request.ContentType = "application/xml";
             request.Headers.Add("Accept-Encoding", "gzip,deflate");
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;

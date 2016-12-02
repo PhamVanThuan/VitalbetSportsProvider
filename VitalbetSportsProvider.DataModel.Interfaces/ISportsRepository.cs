@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using VitalbetSportsProvider.Models;
 
 namespace VitalbetSportsProvider.DataModel.Interfaces
 {
     public interface ISportsRepository
     {
-        void AddOrUpdate(IList<Sport> sports);
+        Task AddOrUpdateAsync(IList<Sport> sports);
 
         IReadOnlyCollection<Sport> GetSports();
     }
