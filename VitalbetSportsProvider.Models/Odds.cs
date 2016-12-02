@@ -1,9 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics;
-
-namespace VitalbetSportsProvider.Models
+﻿namespace VitalbetSportsProvider.Models
 {
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Diagnostics;
+
     [Table("Odds")]
     [DebuggerDisplay("{Name}({Id}) Value = {Value}")]
     public class Odds

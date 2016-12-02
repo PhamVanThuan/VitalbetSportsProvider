@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNet.SignalR;
-using System.Collections.Generic;
-using VitalbetSportsProvider.DataModel.Interfaces;
-using VitalbetSportsProvider.Models;
-
-namespace VitalbetSportsProvider.WebClient.Hubs
+﻿namespace VitalbetSportsProvider.WebClient.Hubs
 {
+    using System.Collections.Generic;
+    using Microsoft.AspNet.SignalR;
+    using VitalbetSportsProvider.DataModel.Interfaces;
+    using VitalbetSportsProvider.Models;
+
     public class SportsHub : Hub
     {
         private readonly ISportsRepository _sportsRepository;

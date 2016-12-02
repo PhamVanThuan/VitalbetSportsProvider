@@ -1,9 +1,9 @@
-﻿using System;
-using System.Diagnostics;
-using System.Xml.Serialization;
-
-namespace VitalbetSportsProvider.Models.Xml
+﻿namespace VitalbetSportsProvider.Models.Xml
 {
+    using System;
+    using System.Diagnostics;
+    using System.Xml.Serialization;
+
     [Serializable]
     [DebuggerDisplay("{Name}({Id}) Value = {Value}")]
     public class XmlOdds

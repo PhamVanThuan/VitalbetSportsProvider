@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics;
-
-namespace VitalbetSportsProvider.Models
+﻿namespace VitalbetSportsProvider.Models
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Diagnostics;
+
     [Table("Events")]
     [DebuggerDisplay("{Name}({Id}) Matches = {Matches?.Count ?? 0}")]
     public class Event

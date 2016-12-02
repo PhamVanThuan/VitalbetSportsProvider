@@ -1,16 +1,16 @@
-﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using VitalbetSportsProvider.DataModel.Interfaces;
-using VitalbetSportsProvider.Feed.Interfaces;
-using VitalbetSportsProvider.Models;
-
-namespace VitalbetSportsProvider.Core
+﻿namespace VitalbetSportsProvider.Core
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using AutoMapper;
+    using VitalbetSportsProvider.DataModel.Interfaces;
+    using VitalbetSportsProvider.Feed.Interfaces;
+    using VitalbetSportsProvider.Models;
+
     /// <summary>
     /// It is backgound task in the WebClient, but ideally has to be different service.
     /// </summary>
@@ -55,10 +55,10 @@ namespace VitalbetSportsProvider.Core
                         break;
                     }
 
-                    var sports = await LoadSports();
+                    var sports = await this.LoadSports();
                     await this._sportsRepository.AddOrUpdateAsync(sports);
 
-                    var delayMs = ExecIntervalSeconds * 1000 - sw.ElapsedMilliseconds;
+                    var delayMs = (ExecIntervalSeconds * 1000) - sw.ElapsedMilliseconds;
                     if (delayMs > 0)
                     {
                         await Task.Delay(TimeSpan.FromMilliseconds(delayMs));
@@ -76,11 +76,11 @@ namespace VitalbetSportsProvider.Core
             var xml = await this._vitalbetSportsRepository.RequestSportsAsync();
             return xml.Sports
                 .Select(this._mapper.Map<Sport>)
-                .Select(FixForeignKeyIds)
+                .Select(this.FixForeignKeyIds)
                 .ToList();
         }
 
-        private static Sport FixForeignKeyIds(Sport s)
+        private Sport FixForeignKeyIds(Sport s)
         {
             s.Events.ForEach(e =>
             {

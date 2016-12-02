@@ -1,12 +1,12 @@
-﻿using System.Web.Mvc;
-
-namespace VitalbetSportsProvider.WebClient.Controllers
+﻿namespace VitalbetSportsProvider.WebClient.Controllers
 {
+    using System.Web.Mvc;
+
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
     }
 }

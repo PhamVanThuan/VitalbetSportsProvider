@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-using VitalbetSportsProvider.Models.Xml;
-
-namespace VitalbetSportsProvider.Feed.Interfaces
+﻿namespace VitalbetSportsProvider.Feed.Interfaces
 {
+    using System.Threading.Tasks;
+    using VitalbetSportsProvider.Models.Xml;
+
     public interface IVitalbetSportsRepository
     {
         Task<XmlSports> RequestSportsAsync();

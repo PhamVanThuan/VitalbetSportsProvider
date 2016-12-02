@@ -1,8 +1,8 @@
-﻿using System.Data.Entity;
-using VitalbetSportsProvider.Models;
-
-namespace VitalbetSportsProvider.DataModel
+﻿namespace VitalbetSportsProvider.DataModel
 {
+    using System.Data.Entity;
+    using VitalbetSportsProvider.Models;
+
     internal class SportsContext : DbContext
     {
         public DbSet<Sport> Sports { get; set; }

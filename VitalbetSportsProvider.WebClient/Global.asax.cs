@@ -1,14 +1,14 @@
-﻿using System;
-using System.Web;
-using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
-using VitalbetSportsProvider.Core;
-
-namespace VitalbetSportsProvider.WebClient
+﻿namespace VitalbetSportsProvider.WebClient
 {
-    public class MvcApplication : HttpApplication
+    using System;
+    using System.Web;
+    using System.Web.Http;
+    using System.Web.Mvc;
+    using System.Web.Optimization;
+    using System.Web.Routing;
+    using VitalbetSportsProvider.Core;
+    
+    public class Global : HttpApplication
     {
         private IFeedRunner _feedRunner;
 

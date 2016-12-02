@@ -1,15 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using VitalbetSportsProvider.DataModel.Interfaces;
-using VitalbetSportsProvider.Models;
-
-namespace VitalbetSportsProvider.DataModel
+﻿namespace VitalbetSportsProvider.DataModel
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using VitalbetSportsProvider.DataModel.Interfaces;
+    using VitalbetSportsProvider.Models;
+
     public class SportsRepository : ISportsRepository
     {
-        IReadOnlyCollection<Sport> cached;
-
         public async Task AddOrUpdateAsync(IList<Sport> sports)
         {
             var events = sports.SelectMany(s => s.Events).ToList();
@@ -31,14 +29,9 @@ namespace VitalbetSportsProvider.DataModel
 
         public IReadOnlyCollection<Sport> GetSports()
         {
-            if (cached != null)
-            {
-                return cached;
-            }
-
             using (var context = new SportsContext())
             {
-                return cached = context
+                return context
                     .Sports
                     .Include("Events")
                     .ToList();

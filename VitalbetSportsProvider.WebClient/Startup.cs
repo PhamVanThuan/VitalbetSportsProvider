@@ -1,14 +1,11 @@
-﻿using Microsoft.AspNet.SignalR;
-using Microsoft.Owin;
-using Microsoft.Practices.Unity;
-using Owin;
-using VitalbetSportsProvider.Core;
-using VitalbetSportsProvider.WebClient;
-using VitalbetSportsProvider.WebClient.Hubs;
-
-[assembly: OwinStartup(typeof(Startup))]
-namespace VitalbetSportsProvider.WebClient
+﻿namespace VitalbetSportsProvider.WebClient
 {
+    using Microsoft.AspNet.SignalR;
+    using Microsoft.Practices.Unity;
+    using Owin;
+    using VitalbetSportsProvider.Core;
+    using VitalbetSportsProvider.WebClient.Hubs;
+
     public class Startup
     {
         public void Configuration(IAppBuilder app)

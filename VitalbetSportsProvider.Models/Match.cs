@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics;
-
-namespace VitalbetSportsProvider.Models
+﻿namespace VitalbetSportsProvider.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Diagnostics;
+
     [Table("Matches")]
     [DebuggerDisplay("{Name}({Id}) Bets = {Bets?.Count ?? 0}")]
     public class Match

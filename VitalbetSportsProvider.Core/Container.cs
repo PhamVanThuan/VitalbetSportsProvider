@@ -1,12 +1,12 @@
-﻿using AutoMapper;
-using Microsoft.Practices.Unity;
-using VitalbetSportsProvider.DataModel;
-using VitalbetSportsProvider.DataModel.Interfaces;
-using VitalbetSportsProvider.Feed.Http;
-using VitalbetSportsProvider.Feed.Interfaces;
-
-namespace VitalbetSportsProvider.Core
+﻿namespace VitalbetSportsProvider.Core
 {
+    using AutoMapper;
+    using Microsoft.Practices.Unity;
+    using VitalbetSportsProvider.DataModel;
+    using VitalbetSportsProvider.DataModel.Interfaces;
+    using VitalbetSportsProvider.Feed.Http;
+    using VitalbetSportsProvider.Feed.Interfaces;
+
     public class Container
     {
         private static volatile IUnityContainer _instance;

@@ -1,9 +1,9 @@
-﻿using AutoMapper;
-using VitalbetSportsProvider.Models;
-using VitalbetSportsProvider.Models.Xml;
-
-namespace VitalbetSportsProvider.Core
+﻿namespace VitalbetSportsProvider.Core
 {
+    using AutoMapper;
+    using VitalbetSportsProvider.Models;
+    using VitalbetSportsProvider.Models.Xml;
+
     public class XmlMappings : Profile
     {
         public XmlMappings()

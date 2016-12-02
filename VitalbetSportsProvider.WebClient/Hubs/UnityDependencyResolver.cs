@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNet.SignalR;
-using Microsoft.Practices.Unity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace VitalbetSportsProvider.WebClient.Hubs
+﻿namespace VitalbetSportsProvider.WebClient.Hubs
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.AspNet.SignalR;
+    using Microsoft.Practices.Unity;
+
     public class UnityDependencyResolver : DefaultDependencyResolver
     {
         private readonly IUnityContainer _container;

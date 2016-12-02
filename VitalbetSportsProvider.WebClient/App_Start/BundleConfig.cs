@@ -1,7 +1,7 @@
-﻿using System.Web.Optimization;
-
-namespace VitalbetSportsProvider.WebClient
+﻿namespace VitalbetSportsProvider.WebClient
 {
+    using System.Web.Optimization;
+
     public class BundleConfig
     {
         public static void RegisterBundles(BundleCollection bundles)

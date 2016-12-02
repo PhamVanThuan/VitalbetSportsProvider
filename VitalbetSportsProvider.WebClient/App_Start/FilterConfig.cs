@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-
-namespace VitalbetSportsProvider.WebClient
+﻿namespace VitalbetSportsProvider.WebClient
 {
+    using System.Web.Mvc;
+
     public class FilterConfig
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)

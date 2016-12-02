@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Xml.Serialization;
-
-namespace VitalbetSportsProvider.Models.Xml
+﻿namespace VitalbetSportsProvider.Models.Xml
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Xml.Serialization;
+
     [Serializable]
     [DebuggerDisplay("{Name}({Id}) Odds = {Odds?.Count ?? 0}")]
     public class XmlBet

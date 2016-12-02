@@ -1,8 +1,8 @@
-﻿using System.Web.Http;
-using Newtonsoft.Json.Serialization;
-
-namespace VitalbetSportsProvider.WebClient
+﻿namespace VitalbetSportsProvider.WebClient
 {
+    using System.Web.Http;
+    using Newtonsoft.Json.Serialization;
+
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
@@ -14,8 +14,7 @@ namespace VitalbetSportsProvider.WebClient
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+                defaults: new { id = RouteParameter.Optional });
         }
     }
 }

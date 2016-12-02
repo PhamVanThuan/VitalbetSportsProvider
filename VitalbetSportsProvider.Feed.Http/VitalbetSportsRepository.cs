@@ -1,13 +1,13 @@
-﻿using System.IO;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using VitalbetSportsProvider.Feed.Interfaces;
-using VitalbetSportsProvider.Models.Xml;
-
-namespace VitalbetSportsProvider.Feed.Http
+﻿namespace VitalbetSportsProvider.Feed.Http
 {
+    using System.IO;
+    using System.Net;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Xml.Serialization;
+    using VitalbetSportsProvider.Feed.Interfaces;
+    using VitalbetSportsProvider.Models.Xml;
+
     public class VitalbetSportsRepository : IVitalbetSportsRepository
     {
         private const string Url = "http://vitalbet.net/sportxml";
