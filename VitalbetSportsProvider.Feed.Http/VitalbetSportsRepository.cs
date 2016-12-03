@@ -22,7 +22,6 @@
             request.Headers.Set(HttpRequestHeader.CacheControl, "no-cache");
             request.Headers.Set(HttpRequestHeader.Pragma, "no-cache");
             request.Headers.Add("Origin", Url);
-            request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36";
             request.Referer = Url;
             request.Method = "GET";
             request.ContentType = "text/html";

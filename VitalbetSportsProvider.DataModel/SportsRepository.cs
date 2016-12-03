@@ -8,23 +8,18 @@
 
     public class SportsRepository : ISportsRepository
     {
-        public async Task AddOrUpdateAsync(IList<Sport> sports)
+        public async Task AddOrUpdateAsync(
+            IReadOnlyCollection<Sport> sports,
+            IReadOnlyCollection<Event> events,
+            IReadOnlyCollection<Match> matches,
+            IReadOnlyCollection<Bet> bets,
+            IReadOnlyCollection<Odds> odds)
         {
-            var events = sports.SelectMany(s => s.Events).ToList();
-            var matches = events.SelectMany(s => s.Matches).ToList();
-            var bets = matches.SelectMany(s => s.Bets).ToList();
-            var odds = bets.SelectMany(s => s.Odds).ToList();
-
-            using (var context = new SportsContext())
-            {
-                await context.BulkMergeAsync(sports);
-                await context.BulkMergeAsync(events);
-                await context.BulkMergeAsync(matches);
-                await context.BulkMergeAsync(bets);
-                await context.BulkMergeAsync(odds);
-
-                await context.BulkSaveChangesAsync();
-            }
+            await this.AddOrUpdateAsync(sports);
+            await this.AddOrUpdateAsync(events);
+            await this.AddOrUpdateAsync(matches);
+            await this.AddOrUpdateAsync(bets);
+            await this.AddOrUpdateAsync(odds);
         }
 
         public IReadOnlyCollection<Sport> GetSports()
@@ -35,6 +30,21 @@
                     .Sports
                     .Include("Events")
                     .ToList();
+            }
+        }
+
+        private async Task AddOrUpdateAsync<T>(IReadOnlyCollection<T> sports)
+            where T : class
+        {
+            if (sports.Count <= 0)
+            {
+                return;
+            }
+
+            using (var context = new SportsContext())
+            {
+                await context.BulkMergeAsync(sports);
+                await context.BulkSaveChangesAsync();
             }
         }
     }

@@ -6,8 +6,13 @@
 
     public interface ISportsRepository
     {
-        Task AddOrUpdateAsync(IList<Sport> sports);
-
+        Task AddOrUpdateAsync(
+               IReadOnlyCollection<Sport> sports,
+               IReadOnlyCollection<Event> events,
+               IReadOnlyCollection<Match> matches,
+               IReadOnlyCollection<Bet> bets,
+               IReadOnlyCollection<Odds> odds);
+        
         IReadOnlyCollection<Sport> GetSports();
     }
 }
