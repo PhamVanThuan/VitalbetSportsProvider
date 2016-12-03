@@ -22,6 +22,7 @@
 
         public List<Bet> Bets { get; set; } = new List<Bet>();
 
+        [Index]
         public DateTime StartDate { get; set; }
     
         public MatchType MatchType { get; set; }

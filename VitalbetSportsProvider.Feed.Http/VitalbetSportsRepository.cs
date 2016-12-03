@@ -1,9 +1,7 @@
 ﻿namespace VitalbetSportsProvider.Feed.Http
 {
-    using System;
     using System.IO;
     using System.Net;
-    using System.Net.Cache;
     using System.Text;
     using System.Threading.Tasks;
     using System.Xml.Serialization;
