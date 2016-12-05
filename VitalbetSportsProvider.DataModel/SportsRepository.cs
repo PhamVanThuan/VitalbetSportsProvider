@@ -6,7 +6,7 @@
     using VitalbetSportsProvider.DataModel.Interfaces;
     using VitalbetSportsProvider.Models;
     using VitalbetSportsProvider.ViewModels;
-    
+
     public class SportsRepository : ISportsRepository
     {
         public async Task AddOrUpdateAsync(
@@ -69,6 +69,29 @@
                     {
                         Id = s.Id,
                         Name = s.Name
+                    })
+                    .ToList();
+            }
+        }
+
+        public IReadOnlyCollection<BetViewModel> GetBets(int matchId)
+        {
+            using (var context = new SportsContext())
+            {
+                return context
+                    .Bets
+                    .Include("Odds")
+                    .Where(s => s.MatchId == matchId)
+                    .Select(s => new BetViewModel
+                    {
+                        Id = s.Id,
+                        Name = s.Name,
+                        ////Odds = s.Odds.Select(o => new OddsViewModel
+                        ////{
+                        ////    Id = o.Id,
+                        ////    Name = o.Name
+                        ////})
+                        ////.ToList()
                     })
                     .ToList();
             }

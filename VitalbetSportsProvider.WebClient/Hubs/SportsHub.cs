@@ -19,5 +19,7 @@
         public IReadOnlyCollection<EventViewModel> GetEvents(int sprortId) => this._sportsRepository.GetEvents(sprortId);
 
         public IReadOnlyCollection<MatchViewModel> GetMatches(int eventId) => this._sportsRepository.GetMatches(eventId);
+
+        public IReadOnlyCollection<BetViewModel> GetBets(int matchId) => this._sportsRepository.GetBets(matchId);
     }
 }

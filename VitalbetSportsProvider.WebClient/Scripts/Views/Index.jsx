@@ -32,6 +32,15 @@
         });
     }
 
+    onMatchClick(matchId) {
+        app.hub.call({
+            hub: "sportsHub",
+            method: "getBets",
+            params: [matchId],
+            onDone: this.onBetsLoaded.bind(this)
+        });
+    }
+
     onEventsLoaded(result) {
         this.setState({ events: result, isOpen: this.state.isOpen });
     }
@@ -40,15 +49,20 @@
         this.setState({ matches: result });
     }
 
+    onBetsLoaded(result) {
+        debugger 
+        //this.setState({ matches: result });
+    }
+
     render() {
 
         const eventsSort =
             firstBy((a, b) => b.MatchesCount - a.MatchesCount)
             .thenBy((a, b) => a.Name.localeCompare(b.Name));
-
         const matchesSort = (a, b) => a.Name.localeCompare(b.Name);
 
         const onEventClick = this.onEventClick.bind(this);
+        const onMatchClick = this.onMatchClick.bind(this);
 
         return (
             <div className="row">
@@ -61,7 +75,7 @@
                     {
                     this.state.events.sort(eventsSort).map(function (ev) {
                         return (
-                            <div>
+                            <div key={"Event_{0}".format(ev.Id)}>
                                 <span onClick={onEventClick.bind(null, ev.Id)}>{ev.Name}</span> 
                                 <span className="badge">{ev.MatchesCount}</span>
                             </div>
@@ -71,10 +85,10 @@
                 </div>
                 <div className="col-md-9">
                 {
-                    this.state.matches.sort(matchesSort).map(function (ev) {
+                    this.state.matches.sort(matchesSort).map(function (match) {
                         return (
-                            <div className="col-md-4">
-                                <span>{ev.Name}</span> 
+                            <div key={"Match_{0}".format(match.Id)} className="col-md-4">
+                                <span onClick={onMatchClick.bind(null, match.Id) }>{match.Name}</span> 
                             </div>
                         );
                     })
@@ -108,7 +122,7 @@ class Index extends React.Component {
             <div>
                 {
                     this.state.sports.sort(sportsSort).map(function (sport) {
-                        return <Sport sport={sport} />;
+                        return <Sport key={"Sport_{0}".format(sport.Id)} sport={sport} />;
                     })
                 }
             </div>

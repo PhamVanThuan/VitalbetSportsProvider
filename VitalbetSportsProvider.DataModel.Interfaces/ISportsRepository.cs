@@ -19,5 +19,7 @@
         IReadOnlyCollection<EventViewModel> GetEvents(int sportId);
 
         IReadOnlyCollection<MatchViewModel> GetMatches(int eventId);
+
+        IReadOnlyCollection<BetViewModel> GetBets(int matchId);
     }
 }
