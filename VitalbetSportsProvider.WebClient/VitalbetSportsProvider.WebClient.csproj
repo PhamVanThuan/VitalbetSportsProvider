@@ -205,7 +205,9 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\app\HubExtensions.js" />
+    <Content Include="Scripts\app\firstBy.js" />
+    <Content Include="Scripts\app\stringExtensions.js" />
+    <Content Include="Scripts\app\hubExtensions.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -265,6 +267,10 @@
     <ProjectReference Include="..\VitalbetSportsProvider.Models\VitalbetSportsProvider.Models.csproj">
       <Project>{7AD10505-68DF-4B22-A062-B9DB7144AA7C}</Project>
       <Name>VitalbetSportsProvider.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VitalbetSportsProvider.ViewModels\VitalbetSportsProvider.ViewModels.csproj">
+      <Project>{62278413-C688-49D7-B0A1-B9628A356761}</Project>
+      <Name>VitalbetSportsProvider.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

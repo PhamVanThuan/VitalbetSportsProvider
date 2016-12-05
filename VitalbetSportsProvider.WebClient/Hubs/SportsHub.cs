@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using Microsoft.AspNet.SignalR;
     using VitalbetSportsProvider.DataModel.Interfaces;
-    using VitalbetSportsProvider.Models;
+    using VitalbetSportsProvider.ViewModels;
 
     public class SportsHub : Hub
     {
@@ -14,6 +14,10 @@
             this._sportsRepository = sportsRepository;
         }
 
-        public IReadOnlyCollection<Sport> GetSports() => this._sportsRepository.GetSports();
+        public IReadOnlyCollection<SportViewModel> GetSports() => this._sportsRepository.GetSports();
+
+        public IReadOnlyCollection<EventViewModel> GetEvents(int sprortId) => this._sportsRepository.GetEvents(sprortId);
+
+        public IReadOnlyCollection<MatchViewModel> GetMatches(int eventId) => this._sportsRepository.GetMatches(eventId);
     }
 }

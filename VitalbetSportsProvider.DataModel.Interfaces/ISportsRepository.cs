@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using VitalbetSportsProvider.Models;
+    using VitalbetSportsProvider.ViewModels;
 
     public interface ISportsRepository
     {
@@ -13,6 +14,10 @@
                IReadOnlyCollection<Bet> bets,
                IReadOnlyCollection<Odds> odds);
         
-        IReadOnlyCollection<Sport> GetSports();
+        IReadOnlyCollection<SportViewModel> GetSports();
+
+        IReadOnlyCollection<EventViewModel> GetEvents(int sportId);
+
+        IReadOnlyCollection<MatchViewModel> GetMatches(int eventId);
     }
 }

@@ -12,7 +12,12 @@
                 "~/Scripts/react.js",
                 "~/Scripts/react-dom.js",
                 "~/Scripts/bootstrap.js"));
-            
+
+            bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                "~/Scripts/app/firstBy.js",
+                "~/Scripts/app/hubExtensions.js",
+                "~/Scripts/app/stringExtensions.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",
                  "~/Content/Site.css"));

@@ -72,6 +72,10 @@
       <Project>{7ad10505-68df-4b22-a062-b9db7144aa7c}</Project>
       <Name>VitalbetSportsProvider.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VitalbetSportsProvider.ViewModels\VitalbetSportsProvider.ViewModels.csproj">
+      <Project>{62278413-C688-49D7-B0A1-B9628A356761}</Project>
+      <Name>VitalbetSportsProvider.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />

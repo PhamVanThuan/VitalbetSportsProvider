@@ -5,7 +5,8 @@
     using System.Threading.Tasks;
     using VitalbetSportsProvider.DataModel.Interfaces;
     using VitalbetSportsProvider.Models;
-
+    using VitalbetSportsProvider.ViewModels;
+    
     public class SportsRepository : ISportsRepository
     {
         public async Task AddOrUpdateAsync(
@@ -22,13 +23,53 @@
             await this.AddOrUpdateAsync(odds);
         }
 
-        public IReadOnlyCollection<Sport> GetSports()
+        public IReadOnlyCollection<SportViewModel> GetSports()
         {
             using (var context = new SportsContext())
             {
                 return context
                     .Sports
                     .Include("Events")
+                    .Select(s => new SportViewModel
+                    {
+                        Id = s.Id,
+                        Name = s.Name,
+                        EventsCount = s.Events.Count
+                    })
+                    .ToList();
+            }
+        }
+
+        public IReadOnlyCollection<EventViewModel> GetEvents(int sportId)
+        {
+            using (var context = new SportsContext())
+            {
+                return context
+                    .Events
+                    .Include("Matches")
+                    .Where(s => s.SportId == sportId)
+                    .Select(s => new EventViewModel
+                    {
+                        Id = s.Id,
+                        Name = s.Name,
+                        MatchesCount = s.Matches.Count
+                    })
+                    .ToList();
+            }
+        }
+
+        public IReadOnlyCollection<MatchViewModel> GetMatches(int eventId)
+        {
+            using (var context = new SportsContext())
+            {
+                return context
+                    .Matches
+                    .Where(s => s.EventId == eventId)
+                    .Select(s => new MatchViewModel
+                    {
+                        Id = s.Id,
+                        Name = s.Name
+                    })
                     .ToList();
             }
         }
