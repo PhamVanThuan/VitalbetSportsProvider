@@ -78,22 +78,29 @@
         {
             using (var context = new SportsContext())
             {
-                return context
-                    .Bets
-                    .Include("Odds")
-                    .Where(s => s.MatchId == matchId)
-                    .Select(s => new BetViewModel
-                    {
-                        Id = s.Id,
-                        Name = s.Name,
-                        ////Odds = s.Odds.Select(o => new OddsViewModel
-                        ////{
-                        ////    Id = o.Id,
-                        ////    Name = o.Name
-                        ////})
-                        ////.ToList()
-                    })
+                var bets = context.Bets.Where(b => b.MatchId == matchId).ToList();
+                var betIds = bets.Select(b => b.Id).ToList();
+                var odds = context.Odds.Where(o => betIds.Contains(o.BetId)).ToList();
+
+                // todo we may do it in DB, not sure if it will be better
+                var result = bets
+                    .GroupJoin(odds, b => b.Id, o => o.BetId, (bet, oddsList) =>
+                        new BetViewModel
+                        {
+                            Id = bet.Id,
+                            Name = bet.Name,
+                            Odds = oddsList.Select(o => new OddsViewModel
+                            {
+                                Id = o.Id,
+                                Name = o.Name,
+                                Value = o.Value,
+                                ChangeSign = 0
+                            })
+                            .ToList()
+                        })
                     .ToList();
+
+                return result;
             }
         }
 
