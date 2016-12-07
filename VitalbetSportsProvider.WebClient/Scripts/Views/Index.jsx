@@ -1,8 +1,9 @@
 ﻿class Bets extends React.Component {
+
     render() {
 
         const betsSort = (a, b) => a.Name.localeCompare(b.Name);
-        
+
         return (
             <div className="col-md-9">
                 {
@@ -23,6 +24,24 @@
             }
             </div>
         );
+    }
+
+    componentWillMount() {
+        ////var arrayUpdate = function (array, item, indexFactory) {
+        ////    const id = array.findIndex(indexFactory);
+        ////    if (id >= 0) {
+        ////        array[id] = item;
+        ////        return true;
+        ////    }
+
+        ////    return false;
+        ////};
+        ////$.connection.betsHub.client.addOrUpdate = bet => {
+        ////    if (!arrayUpdate(this.state.bets, bet, b => b.Id === bet.Id)) {
+        ////        this.state.bets.push(bet);
+        ////    }
+        ////    this.setState({ bets: this.state.bets });
+        ////};
     }
 };
 
@@ -112,8 +131,8 @@ class Sport extends React.Component {
 
     onMatchClick(matchId) {
         app.hub.call({
-            hub: "sportsHub",
-            method: "getBets",
+            hub: "betsHub",
+            method: "get",
             params: [matchId],
             onDone: this.onBetsLoaded.bind(this)
         });
@@ -153,6 +172,7 @@ class Sport extends React.Component {
 class Index extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             sports: []
         };

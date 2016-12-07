@@ -5,6 +5,7 @@
     using Owin;
     using VitalbetSportsProvider.Core;
     using VitalbetSportsProvider.WebClient.Hubs;
+    using VitalbetSportsProvider.WebClient.Hubs.UpdatableHubs;
 
     public class Startup
     {
@@ -12,6 +13,7 @@
         {
             var container = Container.Instance;
             container.RegisterType<SportsHub, SportsHub>();
+            container.RegisterType<BetsHub, BetsHub>();
 
             var config = new HubConfiguration { Resolver = new UnityDependencyResolver(container), EnableDetailedErrors = true };
             app.MapSignalR(config);

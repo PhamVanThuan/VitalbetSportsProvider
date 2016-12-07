@@ -10,14 +10,16 @@
     using VitalbetSportsProvider.DataModel.Interfaces;
     using VitalbetSportsProvider.Feed.Interfaces;
     using VitalbetSportsProvider.Models;
+    using VitalbetSportsProvider.ViewModels;
 
     /// <summary>
     /// It is backgound task in the WebClient, but ideally has to be different service.
     /// </summary>
     public class FeedRunner : IFeedRunner
     {
-        private const int ExecIntervalSeconds = 60;
+        private const int ExecIntervalSeconds = 5;
 
+        private readonly CancellationTokenSource _tokenSource;
         private readonly IMapper _mapper;
         private readonly IVitalbetSportsRepository _vitalbetSportsRepository;
         private readonly ISportsRepository _sportsRepository;
@@ -27,7 +29,8 @@
         private readonly IEqualityComparer<Odds> _oddsComparer;
         private readonly IEqualityComparer<Sport> _sportsComparer;
 
-        private CancellationTokenSource _tokenSource;
+        private readonly IUpdatableServiceInvoke<BetViewModel> _betsUpdatableService;
+        
         private IReadOnlyCollection<Sport> _prevSports;
         private IReadOnlyCollection<Event> _prevEvents;
         private IReadOnlyCollection<Match> _prevMatches;
@@ -42,8 +45,10 @@
             IEqualityComparer<Event> eventsComparer,
             IEqualityComparer<Match> matchesComparer,
             IEqualityComparer<Odds> oddsComparer,
-            IEqualityComparer<Sport> sportsComparer)
+            IEqualityComparer<Sport> sportsComparer,
+            IUpdatableServiceInvoke<BetViewModel> betsUpdatableService)
         {
+            this._tokenSource = new CancellationTokenSource();
             this._mapper = mapper;
             this._vitalbetSportsRepository = vitalbetSportsRepository;
             this._sportsRepository = sportsRepository;
@@ -52,8 +57,7 @@
             this._matchesComparer = matchesComparer;
             this._oddsComparer = oddsComparer;
             this._sportsComparer = sportsComparer;
-            
-            this._tokenSource = new CancellationTokenSource();
+            this._betsUpdatableService = betsUpdatableService;
         }
 
         public void Start()
@@ -113,6 +117,26 @@
                 var addedOrUpdatedMatches = newMatches.Except(this._prevMatches, this._matchesComparer).ToList();
                 var addedOrUpdatedBets = newBets.Except(this._prevBets, this._betsComparer).ToList();
                 var addedOrUpdatedOdds = newOdds.Except(this._prevOdds, this._oddsComparer).ToList();
+
+                var betsToLoad = new HashSet<int>(addedOrUpdatedOdds.Select(o => o.BetId));
+                var addedOrUpdatedBetsWithOdds = this._prevBets
+                    .Where(b => betsToLoad.Contains(b.Id))
+                   .GroupJoin(addedOrUpdatedOdds, b => b.Id, o => o.BetId, (bet, oddsList) =>
+                       new BetViewModel
+                       {
+                           Id = bet.Id,
+                           Name = bet.Name,
+                           Odds = oddsList.Select(o => new OddsViewModel
+                           {
+                               Id = o.Id,
+                               Name = o.Name,
+                               Value = o.Value
+                           })
+                           .ToList()
+                       })
+                   .ToList();
+
+                this._betsUpdatableService.AddOrUpdateInvoke(addedOrUpdatedBetsWithOdds);
 
                 await this._sportsRepository.AddOrUpdateAsync(addedOrUpdatedSports, addedOrUpdatedEvents, addedOrUpdatedMatches, addedOrUpdatedBets, addedOrUpdatedOdds);
             }

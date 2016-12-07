@@ -1,4 +1,4 @@
-﻿namespace VitalbetSportsProvider.Core
+﻿namespace VitalbetSportsProvider.Core.Mappings
 {
     using AutoMapper;
     using VitalbetSportsProvider.Models;

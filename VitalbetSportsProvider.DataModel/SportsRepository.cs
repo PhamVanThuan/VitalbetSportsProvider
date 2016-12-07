@@ -93,8 +93,7 @@
                             {
                                 Id = o.Id,
                                 Name = o.Name,
-                                Value = o.Value,
-                                ChangeSign = 0
+                                Value = o.Value
                             })
                             .ToList()
                         })
